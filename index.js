@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const cookiParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const userRouter = require("./routes/user.js");
 
 const app = express();
 const port = process.env.PORT;
@@ -28,11 +29,12 @@ DBConnection();
 app.use(express.json());
 app.use(cookiParser());
 app.use(cors());
+app.use("/", userRouter);
 
 // Define a route for the root URL
 
 app.get("/", (req, res) => {
-  res.status(201).send("Zoho Test");
+  res.status(201).send("Real Estate Listing Platform");
 });
 
 // Start the server and listen on the specified port
